@@ -1,0 +1,189 @@
++ '[' -r /usr/share/java-utils/java-functions ']'
++ . /usr/share/java-utils/java-functions
+++ _JAVA_HOME=
+++ '[' -f /etc/java/java.conf ']'
+++ . /etc/java/java.conf
++++ JAVA_LIBDIR=/usr/share/java
++++ JNI_LIBDIR=/usr/lib/java
++++ JVM_ROOT=/usr/lib/jvm
++++ JAVACMD_OPTS=
+++ '[' -f /home/klochkov/.java/java.conf ']'
+++ '[' '!' -z '' -a -d '' ']'
+++ '[' -z '' -a -d /usr/lib/jvm/java ']'
+++ '[' -z '' -a -d /usr/lib/jvm/jre ']'
+++ JAVA_HOME=/usr/lib/jvm/jre
++ '[' -z '' ']'
++ TOMCAT_CFG=/etc/tomcat/tomcat.conf
++ '[' -r /etc/tomcat/tomcat.conf ']'
++ . /etc/tomcat/tomcat.conf
+++ JAVA_HOME=/usr/lib/jvm/jre
+++ CATALINA_BASE=/usr/share/tomcat
+++ CATALINA_HOME=/usr/share/tomcat
+++ JASPER_HOME=/usr/share/tomcat
+++ CATALINA_TMPDIR=/var/cache/tomcat/temp
+++ TOMCAT_USER=tomcat
+++ SECURITY_MANAGER=false
+++ SHUTDOWN_WAIT=30
+++ SHUTDOWN_VERBOSE=false
+++ CATALINA_PID=/var/run/tomcat.pid
++ '[' -r /etc/sysconfig/ ']'
++ . /etc/sysconfig/
+/usr/sbin/tomcat: line 21: .: /etc/sysconfig/: is a directory
++ set_javacmd
++ '[' -x '' ']'
++ set_jvm
++ '[' -n /usr/lib/jvm/jre ']'
++ return
++ '[' -x /usr/lib/jvm/jre/jre/sh/java ']'
++ '[' -x /usr/lib/jvm/jre/bin/java ']'
++ JAVACMD=/usr/lib/jvm/jre/bin/java
++ '[' '!' -x /usr/lib/jvm/jre/bin/java ']'
++ '[' -n '' ']'
++ return 0
++ '[' -n '' ']'
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar
+++ build-classpath commons-daemon
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar
++ '[' start = start ']'
++ '[' '!' -z /var/run/tomcat.pid ']'
++ echo 16578
++ /usr/lib/jvm/jre/bin/java -XX:+CMSClassUnloadingEnabled -Xms256M -Xmx1024M -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=2 -XX:SurvivorRatio=6 -XX:NewSize=384m -XX:MaxNewSize=384m -XX:MaxGCPauseMillis=20 -verbose:gc -Xloggc:/home/klochkov/jolokia/logs/gc_log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Duser.timezone=UTC -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8161 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -classpath :/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/usr/share/tomcat -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir=/var/cache/tomcat/temp -Djava.util.logging.config.file=/usr/share/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start
+/usr/sbin/tomcat: line 34: /usr/share/tomcat/logs/catalina.out: Permission denied
+/home/klochkov/jolokia: /home/klochkov/jolokia: is a directory
++ '[' -r /usr/share/java-utils/java-functions ']'
++ . /usr/share/java-utils/java-functions
+++ _JAVA_HOME=
+++ '[' -f /etc/java/java.conf ']'
+++ . /etc/java/java.conf
++++ JAVA_LIBDIR=/usr/share/java
++++ JNI_LIBDIR=/usr/lib/java
++++ JVM_ROOT=/usr/lib/jvm
++++ JAVACMD_OPTS=
+++ '[' -f /home/klochkov/.java/java.conf ']'
+++ '[' '!' -z '' -a -d '' ']'
+++ '[' -z '' -a -d /usr/lib/jvm/java ']'
+++ '[' -z '' -a -d /usr/lib/jvm/jre ']'
+++ JAVA_HOME=/usr/lib/jvm/jre
++ set_javacmd
++ '[' -x '' ']'
++ set_jvm
++ '[' -n /usr/lib/jvm/jre ']'
++ return
++ '[' -x /usr/lib/jvm/jre/jre/sh/java ']'
++ '[' -x /usr/lib/jvm/jre/bin/java ']'
++ JAVACMD=/usr/lib/jvm/jre/bin/java
++ '[' '!' -x /usr/lib/jvm/jre/bin/java ']'
++ '[' -n '' ']'
++ return 0
++ '[' -n '' ']'
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar
+++ build-classpath commons-daemon
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar
++ '[' start = start ']'
++ '[' '!' -z /home/klochkov/jolokia/logs/catalina_pid ']'
++ echo 16734
++ /usr/lib/jvm/jre/bin/java -XX:+CMSClassUnloadingEnabled -Xms256M -Xmx1024M -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=2 -XX:SurvivorRatio=6 -XX:NewSize=384m -XX:MaxNewSize=384m -XX:MaxGCPauseMillis=20 -verbose:gc -Xloggc:/home/klochkov/jolokia/logs/gc_log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Duser.timezone=UTC -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8161 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -classpath :/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/home/klochkov/jolokia -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir= -Djava.util.logging.config.file=/home/klochkov/jolokia/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start
++ '[' -r /usr/share/java-utils/java-functions ']'
++ . /usr/share/java-utils/java-functions
+++ _JAVA_HOME=
+++ '[' -f /etc/java/java.conf ']'
+++ . /etc/java/java.conf
++++ JAVA_LIBDIR=/usr/share/java
++++ JNI_LIBDIR=/usr/lib/java
++++ JVM_ROOT=/usr/lib/jvm
++++ JAVACMD_OPTS=
+++ '[' -f /home/klochkov/.java/java.conf ']'
+++ '[' '!' -z '' -a -d '' ']'
+++ '[' -z '' -a -d /usr/lib/jvm/java ']'
+++ '[' -z '' -a -d /usr/lib/jvm/jre ']'
+++ JAVA_HOME=/usr/lib/jvm/jre
++ set_javacmd
++ '[' -x '' ']'
++ set_jvm
++ '[' -n /usr/lib/jvm/jre ']'
++ return
++ '[' -x /usr/lib/jvm/jre/jre/sh/java ']'
++ '[' -x /usr/lib/jvm/jre/bin/java ']'
++ JAVACMD=/usr/lib/jvm/jre/bin/java
++ '[' '!' -x /usr/lib/jvm/jre/bin/java ']'
++ '[' -n '' ']'
++ return 0
++ '[' -n '' ']'
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar
+++ build-classpath commons-daemon
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar
++ '[' start = start ']'
++ '[' '!' -z /home/klochkov/jolokia/logs/catalina_pid ']'
++ echo 16819
++ /usr/lib/jvm/jre/bin/java -XX:+CMSClassUnloadingEnabled -Xms1024M -Xmx1024M -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=2 -XX:SurvivorRatio=6 -XX:NewSize=384m -XX:MaxNewSize=384m -XX:MaxGCPauseMillis=20 -verbose:gc -Xloggc:/home/klochkov/jolokia/logs/gc_log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Duser.timezone=UTC -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8161 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -classpath :/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/home/klochkov/jolokia -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir= -Djava.util.logging.config.file=/home/klochkov/jolokia/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start
++ '[' -r /usr/share/java-utils/java-functions ']'
++ . /usr/share/java-utils/java-functions
+++ _JAVA_HOME=
+++ '[' -f /etc/java/java.conf ']'
+++ . /etc/java/java.conf
++++ JAVA_LIBDIR=/usr/share/java
++++ JNI_LIBDIR=/usr/lib/java
++++ JVM_ROOT=/usr/lib/jvm
++++ JAVACMD_OPTS=
+++ '[' -f /home/klochkov/.java/java.conf ']'
+++ '[' '!' -z '' -a -d '' ']'
+++ '[' -z '' -a -d /usr/lib/jvm/java ']'
+++ '[' -z '' -a -d /usr/lib/jvm/jre ']'
+++ JAVA_HOME=/usr/lib/jvm/jre
++ set_javacmd
++ '[' -x '' ']'
++ set_jvm
++ '[' -n /usr/lib/jvm/jre ']'
++ return
++ '[' -x /usr/lib/jvm/jre/jre/sh/java ']'
++ '[' -x /usr/lib/jvm/jre/bin/java ']'
++ JAVACMD=/usr/lib/jvm/jre/bin/java
++ '[' '!' -x /usr/lib/jvm/jre/bin/java ']'
++ '[' -n '' ']'
++ return 0
++ '[' -n '' ']'
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar
+++ build-classpath commons-daemon
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar
++ '[' start = start ']'
++ '[' '!' -z /home/klochkov/jolokia/logs/catalina_pid ']'
++ echo 16918
++ /usr/lib/jvm/jre/bin/java -XX:+CMSClassUnloadingEnabled -Xms1024M -Xmx1024M -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=2 -XX:SurvivorRatio=6 -XX:NewSize=384m -XX:MaxNewSize=384m -XX:MaxGCPauseMillis=20 -verbose:gc -Xloggc:/home/klochkov/jolokia/logs/gc_log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Duser.timezone=UTC -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8161 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -classpath :/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/home/klochkov/jolokia -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir= -Djava.util.logging.config.file=/home/klochkov/jolokia/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start
++ '[' -r /usr/share/java-utils/java-functions ']'
++ . /usr/share/java-utils/java-functions
+++ _JAVA_HOME=
+++ '[' -f /etc/java/java.conf ']'
+++ . /etc/java/java.conf
++++ JAVA_LIBDIR=/usr/share/java
++++ JNI_LIBDIR=/usr/lib/java
++++ JVM_ROOT=/usr/lib/jvm
++++ JAVACMD_OPTS=
+++ '[' -f /home/klochkov/.java/java.conf ']'
+++ '[' '!' -z '' -a -d '' ']'
+++ '[' -z '' -a -d /usr/lib/jvm/java ']'
+++ '[' -z '' -a -d /usr/lib/jvm/jre ']'
+++ JAVA_HOME=/usr/lib/jvm/jre
++ set_javacmd
++ '[' -x '' ']'
++ set_jvm
++ '[' -n /usr/lib/jvm/jre ']'
++ return
++ '[' -x /usr/lib/jvm/jre/jre/sh/java ']'
++ '[' -x /usr/lib/jvm/jre/bin/java ']'
++ JAVACMD=/usr/lib/jvm/jre/bin/java
++ '[' '!' -x /usr/lib/jvm/jre/bin/java ']'
++ '[' -n '' ']'
++ return 0
++ '[' -n '' ']'
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar
+++ build-classpath commons-daemon
++ CLASSPATH=:/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar
++ '[' start = start ']'
++ '[' '!' -z /home/klochkov/jolokia/logs/catalina_pid ']'
++ echo 17050
++ /usr/lib/jvm/jre/bin/java -XX:+CMSClassUnloadingEnabled -Xms1024M -Xmx1024M -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=2 -XX:SurvivorRatio=6 -XX:NewSize=384m -XX:MaxNewSize=384m -XX:MaxGCPauseMillis=20 -verbose:gc -Xloggc:/home/klochkov/jolokia/logs/gc_log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Duser.timezone=UTC -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8161 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -classpath :/usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/home/klochkov/jolokia -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir= -Djava.util.logging.config.file=/home/klochkov/jolokia/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start

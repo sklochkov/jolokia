@@ -1,0 +1,4 @@
+May 23, 2014 6:31:43 PM org.apache.catalina.core.ApplicationContext log
+INFO: jolokia-agent: No access restrictor found at classpath:/jolokia-access.xml, access to all MBeans is allowed
+May 23, 2014 6:31:49 PM org.apache.catalina.core.ApplicationContext log
+INFO: jolokia-agent: No access restrictor found at classpath:/jolokia-access.xml, access to all MBeans is allowed

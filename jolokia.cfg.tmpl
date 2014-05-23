@@ -1,0 +1,50 @@
+#CATALINA_BASE="/usr/share/tomcat"
+#CATALINA_HOME="/usr/share/tomcat"
+#JASPER_HOME="/usr/share/tomcat"
+#CATALINA_TMPDIR="/var/cache/tomcat/temp"
+
+# You can pass some parameters to java here if you wish to
+#JAVA_OPTS="-Xminf0.1 -Xmaxf0.3"
+
+# Use JAVA_OPTS to set java.library.path for libtcnative.so
+#JAVA_OPTS="-Djava.library.path=/usr/lib64"
+
+# What user should run tomcat
+#TOMCAT_USER="tomcat"
+
+# You can change your tomcat locale here
+#LANG="en_US"
+
+# Run tomcat under the Java Security Manager
+#SECURITY_MANAGER="false"
+
+# Time to wait in seconds, before killing process
+#SHUTDOWN_WAIT="30"
+
+# Whether to annoy the user with "attempting to shut down" messages or not
+#SHUTDOWN_VERBOSE="false"
+
+# Set the TOMCAT_PID location
+#CATALINA_PID="/var/run/tomcat.pid"
+
+# Connector port is 8080 for this tomcat instance
+#CONNECTOR_PORT="8080"
+
+TOMCAT_USER=__USER__
+WHO=`whoami`
+CATALINA_BASE=__BASEDIR__
+CATALINA_HOME="/usr/share/tomcat"
+JAVA_HOME=""
+LANG="en_US"
+SECURITY_MANAGER="false"
+SHUTDOWN_WAIT="30"
+SHUTDOWN_VERBOSE="false"
+CONNECTOR_PORT="8080"
+JRE_HOME=__JREHOME__
+TOMCAT_LOG="${CATALINA_BASE}/logs/catalina-init.log"
+CATALINA_PID=${CATALINA_BASE}/logs/catalina_pid
+CATALINA_OPTS="-Duser.timezone=UTC -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8161 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+JAVA_OPTS="-XX:+CMSClassUnloadingEnabled -Xms1024M -Xmx1024M -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:ParallelGCThreads=2 -XX:SurvivorRatio=6 -XX:NewSize=384m -XX:MaxNewSize=384m -XX:MaxGCPauseMillis=20 -verbose:gc -Xloggc:$CATALINA_BASE/logs/gc_log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps"
+CATALINA_OUT="${CATALINA_BASE}/logs/catalina.out"
+
+

@@ -1,0 +1,8 @@
+Starting tomcat: touch: cannot touch `/var/run/tomcat.pid': Permission denied
+Error code 4[60G[[0;31mFAILED[0;39m]
+Starting tomcat: touch: cannot touch `/usr/share/tomcat/logs/tomcat-initd.log': Permission denied
+Error code 4[60G[[0;31mFAILED[0;39m]
+Starting tomcat: touch: cannot touch `/usr/share/tomcat/logs/tomcat-initd.log': Permission denied
+Error code 4[60G[[0;31mFAILED[0;39m]
+Starting tomcat: touch: cannot touch `/usr/share/tomcat/logs/tomcat-initd.log': Permission denied
+Error code 4[60G[[0;31mFAILED[0;39m]
