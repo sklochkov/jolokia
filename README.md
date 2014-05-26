@@ -43,12 +43,12 @@ curl -d@post.json 'http://jolokia-server.example.com:8080/jolokia/'
 
 <h3>Полезные атрибуты</h3>
 
-<table width="80%" border="1">
+<table width="100%" border="1">
 <thead>
 <tr>
-<th>Имя</th>
+<th width="60%">Имя</th>
     
-<th>Параметры</th>
+<th width="40%">Параметры</th>
 </tr>
 </thead>
 <tbody>
