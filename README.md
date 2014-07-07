@@ -41,6 +41,46 @@ curl -d@post.json 'http://jolokia-server.example.com:8080/jolokia/'
 </pre>
 </p>
 
+<p>
+Также jolokia поддерживает bulk-pапросы для получения значений нескольких параметров сразу.
+<pre>
+# cat bulk.json
+[{
+    "type" : "read",
+    "mbean" : "java.lang:type=GarbageCollector,name=ConcurrentMarkSweep",
+    "attribute" : "CollectionTime",
+    "target" : {
+        "url" : "service:jmx:rmi:///jndi/rmi://mdir-k01:8161/jmxrmi",
+        "user": "guest",
+        "password": ""
+    }
+},
+{
+    "type" : "read",
+    "mbean" : "java.lang:type=GarbageCollector,name=ParNew",
+    "attribute" : "CollectionTime",
+    "target" : {
+        "url" : "service:jmx:rmi:///jndi/rmi://mdir-k01:8161/jmxrmi",
+        "user": "guest",
+        "password": ""
+    }
+},
+{
+    "type" : "read",
+    "mbean" : "java.lang:type=Memory",
+    "attribute" : "HeapMemoryUsage",
+    "target" : {
+        "url" : "service:jmx:rmi:///jndi/rmi://mdir-k01:8161/jmxrmi",
+        "user": "guest",
+        "password": ""
+    }
+}]
+ 
+# curl -d@bulk.json 'http://localhost:8080/jolokia/'
+[{"timestamp":1401303794,"status":200,"request":{"mbean":"java.lang:name=ConcurrentMarkSweep,type=GarbageCollector","target":{"env":{"password":"","user":"guest"},"url":"service:jmx:rmi:\/\/\/jndi\/rmi:\/\/mdir-k01:8161\/jmxrmi"},"attribute":"CollectionTime","type":"read"},"value":213},{"timestamp":1401303794,"status":200,"request":{"mbean":"java.lang:name=ParNew,type=GarbageCollector","target":{"env":{"password":"","user":"guest"},"url":"service:jmx:rmi:\/\/\/jndi\/rmi:\/\/mdir-k01:8161\/jmxrmi"},"attribute":"CollectionTime","type":"read"},"value":3076},{"timestamp":1401303794,"status":200,"request":{"mbean":"java.lang:type=Memory","target":{"env":{"password":"","user":"guest"},"url":"service:jmx:rmi:\/\/\/jndi\/rmi:\/\/mdir-k01:8161\/jmxrmi"},"attribute":"HeapMemoryUsage","type":"read"},"value":{"max":17129537536,"committed":17129537536,"init":17179869184,"used":491790032}}]
+</pre>
+</p>
+
 <h3>Полезные атрибуты</h3>
 
 <table width="100%" border="1">
