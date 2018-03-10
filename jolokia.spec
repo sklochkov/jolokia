@@ -5,7 +5,7 @@
 
 Name: jolokia
 Version: 1.2.1
-Release: 3%{dist}
+Release: 4%{dist}
 
 Summary: JMX to JSON agent and proxy
 License: MIT
@@ -34,8 +34,16 @@ sed < jolokia.cfg.tmpl 's#__BASEDIR__#%{_basedir}#' | sed 's#__USER__#%{_user}#'
 
 %install
 %{__rm} -rf %{buildroot}
+%if 0%{?el6}
 install -m 755 -d %{buildroot}/etc/init.d/
+%endif
+
 install -m 755 -d %{buildroot}/etc/sysconfig
+
+%if 0%{?el7}
+install -m 755 -d %{buildroot}/usr/lib/systemd/system/
+%endif
+
 
 install -m 755 -d %{buildroot}/%{_basedir}/{conf,bin,logs,work,temp,webapps}
 install -m755 -d %{buildroot}/%{_basedir}/webapps/jolokia
@@ -63,7 +71,15 @@ install -m 644 ./webapps/jolokia/WEB-INF/lib/jolokia-jsr160-1.2.1.jar %{buildroo
 install -m 644 ./webapps/jolokia/WEB-INF/lib/jolokia-core-1.2.1.jar %{buildroot}/%{_basedir}/./webapps/jolokia/WEB-INF/lib/jolokia-core-1.2.1.jar
 install -m 644 ./webapps/jolokia/WEB-INF/lib/json-simple-1.1.jar %{buildroot}/%{_basedir}/./webapps/jolokia/WEB-INF/lib/json-simple-1.1.jar
 install -m 644 ./jolokia.cfg %{buildroot}/etc/sysconfig/jolokia
+
+%if 0%{?el6}
 install -m 755 ./jolokia.init.sh %{buildroot}/etc/init.d/jolokia
+%endif
+
+%if 0%{?el7}
+install -m 644 jolokia.service %{buildroot}/usr/lib/systemd/system/jolokia.service
+%endif
+
 rm -f jolokia.cfg
 
 %clean
@@ -72,13 +88,31 @@ rm -f jolokia.cfg
 
 %post
 if [ $1 -eq 1 -o $1 -eq 2 ] ; then
-	chkconfig --add jolokia
+	%if 0%{?el6}
+		chkconfig --add jolokia
+	%endif
+	%if 0%{?el7}
+		%systemd_post jolokia.service
+	%endif
 fi
 
 %preun
 if [ $1 -eq 0 ] ; then
-	chkconfig --del jolokia
+	%if 0%{?el6}
+		chkconfig --del jolokia
+	%endif	
+	%if 0%{?el7}
+		%systemd_preun jolokia.service
+	%endif
+
 fi
+
+%postun
+%if 0%{?el7}
+if [ $1 -eq 0 ] ; then
+	%systemd_postun_with_restart jolokia.service
+fi
+%endif
 
 %files
 
@@ -103,6 +137,10 @@ fi
 %attr(0644, root, root) %{_basedir}/webapps/jolokia/WEB-INF/lib/jolokia-jsr160-1.2.1.jar
 %attr(0644, root, root) %{_basedir}/webapps/jolokia/WEB-INF/lib/jolokia-core-1.2.1.jar
 %attr(0644, root, root) %{_basedir}/webapps/jolokia/WEB-INF/lib/json-simple-1.1.jar
-
+%if 0%{?el6}
 %attr(0755, root, root) /etc/init.d/jolokia
+%endif
+%if 0%{?el7}
+%attr(0644, root, root) /usr/lib/systemd/system/jolokia.service
+%endif
 %attr(0755, root, root) /etc/sysconfig/jolokia

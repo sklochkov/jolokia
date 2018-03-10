@@ -1,0 +1,17 @@
+[Unit]
+Description=Jolokia service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/tomcat/tomcat.conf
+Environment="NAME="
+EnvironmentFile=-/etc/sysconfig/jolokia
+ExecStart=/usr/libexec/tomcat/server start
+SuccessExitStatus=143
+User=tomcat
+Group=tomcat
+
+
+[Install]
+WantedBy=multi-user.target
